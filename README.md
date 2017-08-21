@@ -24,10 +24,19 @@ This repository contains a script which obfuscates persons and companies data fr
 
 ```
 
-3. Access the container and run the script:
+3. Access the container:
 
 ```
-    docker exec -it *<mysql_container>* bash
+    docker exec -it <mysql_container> bash
+```
+
+4. Declare an environment variable that contains the name of the database:
+```    
+    DB_NAME=bdr
+```
+
+5. Run the script:
+```
     bash hide_data.sh
 
 ```
