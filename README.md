@@ -19,8 +19,8 @@ This repository contains a script which obfuscates persons and companies data fr
 
 ```
     cd bdr.registry.dataobfuscation
-    docker cp bdr.registry.dataobfuscation.sh *<mysql_container>*:hide_data.sh
-    docker cp dump.sql *mysql_container*: dump.sql
+    docker cp bdr.registry.dataobfuscation.sh <mysql_container>:hide_data.sh
+    docker cp dump.sql <mysql_container>:dump.sql
 
 ```
 
