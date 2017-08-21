@@ -11,32 +11,28 @@ This repository contains a script which obfuscates persons and companies data fr
 ## How to use
 
 1. Clone this project:
-```
-    git clone git@github.com:eea/bdr.registry.dataobfuscation.git
-```
+    ```
+    $ git clone git@github.com:eea/bdr.registry.dataobfuscation.git
+    ```
 
 2. Copy the dump and the script file into the container:
-
-```
-    cd bdr.registry.dataobfuscation
-    docker cp bdr.registry.dataobfuscation.sh <mysql_container>:hide_data.sh
-    docker cp dump.sql <mysql_container>:dump.sql
-
-```
+    ```
+    $ cd bdr.registry.dataobfuscation
+    $ docker cp bdr.registry.dataobfuscation.sh <mysql_container>:hide_data.sh
+    $ docker cp dump.sql <mysql_container>:dump.sql
+    ```
 
 3. Access the container:
-
-```
-    docker exec -it <mysql_container> bash
-```
+    ```
+    $ docker exec -it <mysql_container> bash
+    ```
 
 4. Declare an environment variable that contains the name of the database:
-```    
-    DB_NAME=bdr
-```
-
+    ```
+    $ export DB_NAME=bdr
+    ```
+    
 5. Run the script:
-```
-    bash hide_data.sh
-
-```
+    ```
+    $ hide_data.sh
+    ```
