@@ -15,9 +15,9 @@ This repository contains a script which obfuscates persons and companies data fr
     $ git clone https://github.com/eea/bdr.registry.dataobfuscation.git
     ```
 2. Create env file from example and fill its variables:
-  ```
+    ```
     $ cp bdr-registry.env.example bdr-registry.env
-  ```
+    ```
 3. Copy the dump and the script file into the container:
     ```
     $ cd bdr.registry.dataobfuscation
