@@ -12,7 +12,7 @@ This repository contains a script which obfuscates persons and companies data fr
 
 1. Clone this project:
     ```
-    $ git clone git@github.com:eea/bdr.registry.dataobfuscation.git
+    $ git clone https://github.com/eea/bdr.registry.dataobfuscation.git
     ```
 
 2. Copy the dump and the script file into the container:
