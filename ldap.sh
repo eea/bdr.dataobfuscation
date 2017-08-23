@@ -10,8 +10,6 @@ virtualenv -p python2.7 venv
 
 pip install MySQL-python
 
-echo $MYSQL_ROOT_PASSWORD
-
 python generate_ldif.py
 
 deactivate
