@@ -1,5 +1,4 @@
 #!/usr/bin/python
-import hashlib
 import MySQLdb
 import os
 
@@ -13,12 +12,11 @@ cursor.execute('SELECT * FROM bdr_registry_account')
 
 with open('bdr.ldif', 'w') as f:
     f.writelines(
-        'dn: ou=Business Reporters,o=EIONET,l=Europe \n'
-        'ou: Business Reporters \n'
-        'description: Users who report to the Business Reportnet \n'
-        'objectClass: top \n'
-        'objectClass: organizationalUnit \n'
-        'structuralObjectClass: organizationalUnit \n\n'
+        'dn: ou=Business Reporters,o=EIONET,l=Europe\n'
+        'ou: Business Reporters\n'
+        'description: Users who report to the Business Reportnet\n'
+        'objectClass: top\n'
+        'objectClass: organizationalUnit\n\n'
      )
     for row in cursor.fetchall():
         try:
@@ -32,24 +30,21 @@ with open('bdr.ldif', 'w') as f:
                 )
             )
             company, country = cursor2.fetchone()
-            sha_1 = hashlib.sha1()
-            sha_1.update(row[2])
             kwargs ={
                 'uid': row[1],
-                'pass': sha_1.hexdigest(),
+                'pass': row[2],
                 'country': country,
                 'company': company
             }
             f.writelines([(
-                'dn: uid={uid},ou=Business Reporters,o=EIONET,l=Europe \n'
-                'uid: {uid} \n'
-                'cn: {company} / {country} \n'
-                'objectClass: top \n'
-                'objectClass: organizationalRole \n'
-                'objectClass: simpleSecurityObject \n'
-                'objectClass: uidObject \n'
-                'structuralObjectClass: organizationalRole \n'
-                'userPassword: {pass} \n\n'.format(**kwargs))
+                'dn: uid={uid},ou=Business Reporters,o=EIONET,l=Europe\n'
+                'uid: {uid}\n'
+                'cn: {company} / {country}\n'
+                'objectClass: top\n'
+                'objectClass: organizationalRole\n'
+                'objectClass: simpleSecurityObject\n'
+                'objectClass: uidObject\n'
+                'userPassword: {pass}\n\n'.format(**kwargs))
             ])
 
         except:
