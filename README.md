@@ -25,7 +25,7 @@ The obfuscation script expects to find the source database file in the same fold
 
 **WARNING: The existing target database will be overwritten!**
 
-    $ ./bdr.registry.dataobfuscation.sh
+    $ ./bdr.registry.sh
 
 
 ### Ldap instructions
