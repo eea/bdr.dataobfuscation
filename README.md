@@ -30,7 +30,7 @@ The obfuscation script expects to find the source database file in the same fold
 
 ### Ldap instructions
 
-After the BDR-registry data obfuscation, ldap database must be updated with the new accounts. This script will generate a ldif file ready for import.
+After the BDR-registry data obfuscation, ldap database must be updated with the new accounts. This script will generate a ldif file named _bdr.ldif_, in the current directory, ready for import.
 
     $ ./ldap.sh
 
