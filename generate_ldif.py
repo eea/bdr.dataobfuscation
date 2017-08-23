@@ -3,7 +3,7 @@ import hashlib
 import MySQLdb
 import os
 
-db = MySQLdb.connect(host=os.environ['MYSQL_HOST'],
+db = MySQLdb.connect(host='localhost',
                      user='root',
                      passwd=os.environ['MYSQL_ROOT_PASSWORD'],
                      db=os.environ['DB_NAME'])
