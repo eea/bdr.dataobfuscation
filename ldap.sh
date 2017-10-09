@@ -1,18 +1,29 @@
 #!/bin/sh
 
-runDeps="gcc virtualenv python-pip python-dev libmysqlclient-dev"
-apt-get update -y \
-&& apt-get install -y --no-install-recommends $runDeps
+COMMANDS="full eionet bdr"
+OPTS=$1
+if [ $# -eq 0 ]
+  then
+    OPTS="full"
+fi
 
-virtualenv -p python2.7 venv
+if [[ $COMMANDS == *"$OPTS"* ]]; then
+    runDeps="gcc virtualenv python-pip python-dev libmysqlclient-dev python-genshi"
+    apt-get update -y \
+    && apt-get install -y --no-install-recommends $runDeps
 
-. venv/bin/activate
+    virtualenv -p python2.7 venv
 
-pip install MySQL-python
+    . venv/bin/activate
 
-python generate_ldif.py
+    pip install MySQL-python Genshi
 
-deactivate
+    python generate_ldif.py $OPTS
 
-rm -r venv
+    deactivate
+
+    rm -r venv
+else
+    echo "Valid script arguments are one of: $COMMANDS"
+fi
 

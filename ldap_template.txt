@@ -1,0 +1,51 @@
+dn: o=EIONET,l=Europe
+objectClass: top
+objectClass: organization
+o: EIONET
+description: Eionet site directory
+structuralObjectClass: organization
+
+dn: ou=Organisations,o=EIONET,l=Europe
+description: Organisations
+ou: Organisations
+objectClass: top
+objectClass: organizationalUnit
+structuralObjectClass: organizationalUnit
+
+dn: ou=Users,o=EIONET,l=Europe
+objectClass: top
+objectClass: organizationalUnit
+ou: Users
+description: Users
+structuralObjectClass: organizationalUnit
+{% for item in eionetitems %}\
+
+dn: uid=${item.user},ou=Users,o=EIONET,l=Europe
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: eionetAccount
+objectClass: top
+cn: ${item.user}
+sn: ${item.user}
+uid: ${item.user}
+userPassword: ${item.password}
+{% end %}
+{% if bdritems %}
+dn: ou=Business Reporters,o=EIONET,l=Europe
+ou: Business Reporters
+description: Users who report to the Business Reportnet
+objectClass: top
+objectClass: organizationalUnit
+{% for item in bdritems %}\
+
+dn: uid=${item.user},ou=Business Reporters,o=EIONET,l=Europe
+uid: ${item.user}
+cn: ${item.company} / ${item.country}
+objectClass: top
+objectClass: organizationalRole
+objectClass: simpleSecurityObject
+objectClass: uidObject
+userPassword: ${item.password}
+{% end %}
+{% end %}
