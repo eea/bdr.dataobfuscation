@@ -32,7 +32,7 @@ The obfuscation script expects to find the source database file in the same fold
 
 After the BDR-registry data obfuscation, ldap database must be updated with the new accounts. This script will generate a ldif file named _bdr.ldif_, in the current directory, ready for import.
 
-Calling the script without any arguments will generate a full dummy data ldif, for the eionet branch and the Business Reporters branch. In order to properly populate the eionet branch with users, it expects the eionet.users file to be filled with `user:password` entries, one entry for each line. There is an eionet.users.example file which can be renamed to eionet.users and populated with the desired values
+Calling the script without any arguments will generate a full dummy data ldif, for the eionet branch and the Business Reporters branch. In order to properly populate the eionet branch with users, it expects the eionet.users file to be filled with `user:password` entries, one entry for each line.
 
     $ ./ldap.sh
 
