@@ -34,16 +34,15 @@ After the BDR-registry data obfuscation, ldap database must be updated with the 
 
 Calling the script without any arguments will generate a full dummy data ldif, for the eionet branch and the Business Reporters branch. In order to properly populate the eionet branch with users, it expects the eionet.users file to be filled with `user:password` entries, one entry for each line.
 
-    $ ./ldap.sh
+There are 3 named arguments required by the script:
 
-If only the Business Reporters branch is to be populated, calling the script with:
+    --type=full|eionet|bdr
+    --rootuid=<uid_of_the_root_user>
+    --rootpw=<password_for_the_root_user>
+The type indicates which branch to be populated, _full_ means that both eionet and the business reporter branches are going to be populated, while _bdr_ will only generate the initial structure of the eionet branch with the additional root user defined. _eionet_ will only generate the eionet branch.
+_rootuid_ and _rootpw_ are used to generate an entry to be used as the root dn.
+A typical call would then look like:
 
-    $ ./ldap.sh bdr
-
-will populate only the Business Reporters branch, but still create the initial structure for the eionet branch.
-
-If only the eionet branch should be populated, the script can be called with:
-
-    $ ./ldap.sh eionet
+    $ ./ldap.sh --type=full --rootuid=foo --rootpw=bar
 
 The template for the ldif is defined in the ldap_template.txt template file.

@@ -6,10 +6,10 @@ import hashlib
 import os
 import sys
 
-LDIF_TYPE = "full"
-
-if len(sys.argv) == 2 and sys.argv[1] in ["full", "eionet", "bdr"]:
+if len(sys.argv) == 4:
     LDIF_TYPE = sys.argv[1]
+    ROOT_UID = sys.argv[2]
+    ROOT_PW = sys.argv[3]
 
 
 def make_secret(password):
@@ -42,10 +42,12 @@ loader = TemplateLoader([os.getcwd()])
 tmpl = loader.load('ldap_template.txt', cls=NewTextTemplate)
 
 with open('bdr.ldif', 'w') as f:
-    e_users = []
+    e_users = [{
+        "user": ROOT_UID,
+        "password": make_secret(ROOT_PW)
+    }]
     b_users = []
     if LDIF_TYPE in ["full", "eionet"]:
-        e_users = []
         with open('eionet.users', 'r') as e_users_f:
             for user in e_users_f:
                 user = user.rstrip('\n').split(':')

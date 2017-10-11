@@ -28,6 +28,8 @@ objectClass: eionetAccount
 objectClass: top
 cn: ${item.user}
 sn: ${item.user}
+givenName: ${item.user}
+mail: ${item.user}@example.com
 uid: ${item.user}
 userPassword: ${item.password}
 {% end %}
@@ -40,12 +42,12 @@ objectClass: organizationalUnit
 {% for item in bdritems %}\
 
 dn: uid=${item.user},ou=Business Reporters,o=EIONET,l=Europe
-uid: ${item.user}
-cn: ${item.company} / ${item.country}
 objectClass: top
 objectClass: organizationalRole
 objectClass: simpleSecurityObject
 objectClass: uidObject
+cn: ${item.company} / ${item.country}
+uid: ${item.user}
 userPassword: ${item.password}
 {% end %}
 {% end %}

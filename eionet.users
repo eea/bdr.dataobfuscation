@@ -9,5 +9,4 @@ data_collaborator:data_collaborator
 manager:manager
 preparer:preparer
 reporter:reporter
-root:root
 service_user:service_user
